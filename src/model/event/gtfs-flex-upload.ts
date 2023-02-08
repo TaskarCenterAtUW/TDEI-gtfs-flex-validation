@@ -1,5 +1,6 @@
+import { IsOptional } from "class-validator";
 import { AbstractDomainEntity, Prop } from "nodets-ms-core/lib/models";
-import { Polygon } from "./polygon-model";
+import { PolygonDto } from "./polygon-model";
 
 //Describes a gtfs flex file meta data.
 export class GTFSFlexUpload extends AbstractDomainEntity {
@@ -13,8 +14,6 @@ export class GTFSFlexUpload extends AbstractDomainEntity {
     collectedBy?: string;
     @Prop('collection_method')
     collectionMethod?: string;
-    @Prop('file_upload_path')
-    fileUploadPath?: string;
     @Prop('user_id')
     userId?: string;
     @Prop('collection_date')
@@ -27,6 +26,7 @@ export class GTFSFlexUpload extends AbstractDomainEntity {
     flexSchemaVersion?: string;
     @Prop('data_source')
     dataSource?: string;
-    @Prop('polygon')
-    polygon?: Polygon;
+    @Prop()
+    @IsOptional()
+    polygon!: PolygonDto;
 }
