@@ -108,6 +108,7 @@ export class GTFSFlexValidator implements IValidator, ITopicSubscription {
         receivedQueueMessage.meta.isValid = result.isValid;
         receivedQueueMessage.meta.validationTime = 90; // This is hardcoded.
         receivedQueueMessage.meta.validationMessage = result.validationMessage;
+        receivedQueueMessage.stage = 'gtfs-flex-validation';
         this.publishingTopic.publish(QueueMessage.from(
             {
                 messageType: 'gtfs-flex-validation',
